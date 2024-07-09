@@ -6,7 +6,7 @@
 
     <bean id="account" class="com.pk.spring.bankingsector.Account"/>
     
-    <bean id="" class="com.pk.spring.bankingsector.Bank">
+    <bean id="bank" class="com.pk.spring.bankingsector.Bank">
 		<property name="account" ref="account"></property> 
 		<property name="accountNumber" value="12345"></property>
 		<property name="accountName">
