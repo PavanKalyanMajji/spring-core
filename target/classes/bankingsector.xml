@@ -4,15 +4,46 @@
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="account" class="com.pk.spring.bankingsector.Account"/>
+    <bean id="account" class="com.pk.spring.xmlconfiguration.Account"/>
     
-    <bean id="bank" class="com.pk.spring.bankingsector.Bank">
+<!-- 1) SetterInjection -->
+	    
+    <bean id="bank" class="com.pk.spring.xmlconfiguration.Bank">
 		<property name="account" ref="account"></property> 
 		<property name="accountNumber" value="12345"></property>
 		<property name="accountName">
 			<value>Vivek</value>
 		</property>   
-		
     </bean>
-
+    
+    
+    
+<!-- 2) Constructor Injection -->
+   	
+   	<!-- Primitive and String Based Injection -->
+   	
+    <bean id="bank1" class="com.pk.spring.xmlconfiguration.Bank">
+    	<constructor-arg value="0987654"/>
+    	<constructor-arg value="Pavan Kalyan"/>
+    	<constructor-arg ref="account"/>
+    </bean>
+    
+    <!-- Dependent Object Injection -->
+    
+	<bean id="bank2" class="com.pk.spring.xmlconfiguration.Bank">
+    	<constructor-arg ref="account"/>
+    </bean>
+    
+    <!-- Constructor Injection with Collection -->
+    
+    <bean id="bank3" class="com.pk.spring.xmlconfiguration.Bank">
+    	<constructor-arg >
+    		<list>
+    			<value>HDFC Bank</value>
+    			<value>CANARA Bank</value>
+    			<value>SBI Bank</value>
+    			<value>ICICI Bank</value>
+    		</list>
+    	</constructor-arg>
+    </bean>
 </beans>

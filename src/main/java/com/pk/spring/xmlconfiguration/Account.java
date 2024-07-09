@@ -1,4 +1,4 @@
-package com.pk.spring.bankingsector;
+package com.pk.spring.xmlconfiguration;
 
 public class Account {
 
