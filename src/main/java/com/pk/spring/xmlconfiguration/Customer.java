@@ -16,7 +16,11 @@ public class Customer {
 		bank2.getLoan();
 		
 		System.out.println("****List Of Banks that we have*****");
-		Bank bank3=iocContainer.getBean("bank3",Bank.class);
-		bank3.getListOfBanks();;
+		Bank listOfBanks=iocContainer.getBean("listOfBanks",Bank.class);
+		listOfBanks.getListOfBanks();
+		
+		System.out.println("****Rate Of Interest*****");
+		Bank rateOfInterest=iocContainer.getBean("rateOfInterest",Bank.class);
+		rateOfInterest.getRateOfInterestOfBank();
 	}
 }

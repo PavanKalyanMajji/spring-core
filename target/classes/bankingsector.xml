@@ -1,49 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="account" class="com.pk.spring.xmlconfiguration.Account"/>
-    
-<!-- 1) SetterInjection -->
-	    
-    <bean id="bank" class="com.pk.spring.xmlconfiguration.Bank">
-		<property name="account" ref="account"></property> 
+	<bean id="account" class="com.pk.spring.xmlconfiguration.Account" />
+
+	<!-- 1) SetterInjection -->
+
+	<bean id="bank" class="com.pk.spring.xmlconfiguration.Bank">
+		<property name="account" ref="account"></property>
 		<property name="accountNumber" value="12345"></property>
 		<property name="accountName">
 			<value>Vivek</value>
-		</property>   
-    </bean>
-    
-    
-    
-<!-- 2) Constructor Injection -->
-   	
-   	<!-- Primitive and String Based Injection -->
-   	
-    <bean id="bank1" class="com.pk.spring.xmlconfiguration.Bank">
-    	<constructor-arg value="0987654"/>
-    	<constructor-arg value="Pavan Kalyan"/>
-    	<constructor-arg ref="account"/>
-    </bean>
-    
-    <!-- Dependent Object Injection -->
-    
+		</property>
+	</bean>
+
+
+
+	<!-- 2) Constructor Injection -->
+
+	<!-- Primitive and String Based Injection -->
+
+	<bean id="bank1" class="com.pk.spring.xmlconfiguration.Bank">
+		<constructor-arg value="0987654" />
+		<constructor-arg value="Pavan Kalyan" />
+		<constructor-arg ref="account" />
+	</bean>
+
+	<!-- Dependent Object Injection -->
+
 	<bean id="bank2" class="com.pk.spring.xmlconfiguration.Bank">
-    	<constructor-arg ref="account"/>
-    </bean>
-    
-    <!-- Constructor Injection with Collection -->
-    
-    <bean id="bank3" class="com.pk.spring.xmlconfiguration.Bank">
-    	<constructor-arg >
-    		<list>
-    			<value>HDFC Bank</value>
-    			<value>CANARA Bank</value>
-    			<value>SBI Bank</value>
-    			<value>ICICI Bank</value>
-    		</list>
-    	</constructor-arg>
-    </bean>
+		<constructor-arg ref="account" />
+	</bean>
+
+	<!-- Constructor Injection with List -->
+
+	<bean id="listOfBanks" class="com.pk.spring.xmlconfiguration.Bank">
+		<constructor-arg>
+			<list>
+				<value>HDFC Bank</value>
+				<value>CANARA Bank</value>
+				<value>SBI Bank</value>
+				<value>ICICI Bank</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<!-- Constructor Injection with Map -->
+
+	<bean id="rateOfInterest" class="com.pk.spring.xmlconfiguration.Bank">
+		<constructor-arg>
+			<map>
+				<entry key="7" value="HDFC"/>
+				<entry key="9" value="SBI"/>
+				<entry key="15" value="ICICI"/>
+			</map>
+		</constructor-arg>
+	</bean>
 </beans>
