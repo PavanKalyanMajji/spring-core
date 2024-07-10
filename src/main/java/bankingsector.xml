@@ -15,8 +15,38 @@
 			<value>Vivek</value>
 		</property>
 	</bean>
-
-
+	
+	<!-- Setter Injection with Dependent Object -->
+	
+	<bean id="bankDependendObject" class="com.pk.spring.xmlconfiguration.Bank">
+		<property name="account">
+			<ref bean="account"/>
+		</property>
+	</bean>
+	
+	<!-- Setter Injection with List -->
+	
+	<bean id="bankObjWithList" class="com.pk.spring.xmlconfiguration.Bank">
+		<property name="listOfBanks">
+			<list>
+				<value>Bank Of Maharastra</value>
+				<value>Bank Of Baroda</value>
+				<value>HCL Bank</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Setter Injection with Map -->
+	
+	<bean id="bankObjWithMap" class="com.pk.spring.xmlconfiguration.Bank">
+		<property name="rateOfInterestBank">
+			<map>
+				<entry key="9" value="Bank Of Maharastra"/>
+				<entry key="11" value="Bank Of Baroda"/>
+				<entry key="15" value="HCL Bank"/>
+			</map>
+		</property>
+	</bean>
 
 	<!-- 2) Constructor Injection -->
 
@@ -28,7 +58,7 @@
 		<constructor-arg ref="account" />
 	</bean>
 
-	<!-- Dependent Object Injection -->
+	<!-- Construction With Dependent Object -->
 
 	<bean id="bank2" class="com.pk.spring.xmlconfiguration.Bank">
 		<constructor-arg ref="account" />
